@@ -1,6 +1,7 @@
 #Asteroids written in Javascript
 *Javascript, canvas, HTML*
 The classic arcade game remade for your browser.
+
 [Click here to play](http://medubin.github.io/asteroidsJS/)
 
 ##Features
