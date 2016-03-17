@@ -13,16 +13,13 @@ GameView.prototype.start = function() {
     this.game.step();
     this.game.draw(this.ctx);
     if (this.game.over()){
-      console.log('???');
       this.renderLose();
       clearInterval(gameLoop);
      }
   }.bind(this), 20);
-  console.log('what');
 };
 
 GameView.prototype.renderLose = function () {
-  console.log('test');
   this.ctx.fillStyle = 'black';
   this.ctx.rect(0,0,this.game.dimX,this.game.dimY + 50);
   this.ctx.fill();
