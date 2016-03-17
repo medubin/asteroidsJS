@@ -13,17 +13,17 @@ The classic arcade game remade for your browser.
 
 ###Asteroids, the ship and bullets all extend the moving object class.
 Inheritance is set up using an inherits utility function:
-
+```javascript
  inherits: function (ChildClass, ParentClass) {
    function Surrogate() {}
    Surrogate.prototype = ParentClass.prototype;
    ChildClass.prototype = new Surrogate();
    ChildClass.prototype.constructor = ChildClass;
  }
-
+```
 ###The game iterates over all objects to check for collisions and to draw on the canvas.
 For every frame objects positions are checked, and if any two objects centerpoints closer than their combined radii, their internal collision logic fires:
-
+```javascript
   Game.prototype.checkCollisons = function () {
     for (var i = this.allObjects().length - 1; i >= 0; i--) {
       for(var j = i - 1; j >= 0; j--){
@@ -36,18 +36,18 @@ For every frame objects positions are checked, and if any two objects centerpoin
       }
     }
   };
-
+```
 
 ###All objects are circles, so collision detection is done by distance between two object centerpoints.
 Objects radii are added together and checked against the distance between two objects:
-
+```javascript
   MovingObject.prototype.isCollidedWith = function(otherObject) {
     return utils.distanceBetween(this.pos, otherObject.pos) < (this.radius + otherObject.radius);
   };
-
+```
 ###Thrust is generated in the direction the ship is facing.
   Impulse is provided by the up key, which then adds to the ships current velocity:
-
+```javascript
   Ship.prototype.power = function (impulse) {
     var xVel = impulse * Math.cos(this.direct) + this.vel[0];
     var yVel = impulse * Math.sin(this.direct) + this.vel[1];
@@ -58,7 +58,7 @@ Objects radii are added together and checked against the distance between two ob
    ];
 
   };
-
+```
 
 ##Gameplay photos
 
