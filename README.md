@@ -1,4 +1,4 @@
-#Asteroids written in Javascript
+# Asteroids written in Javascript
 *Javascript, canvas, HTML*
 The classic arcade game remade for your browser.
 
@@ -10,9 +10,9 @@ The classic arcade game remade for your browser.
 - Ship accelerates in given direction, adding impulse to its current velocity.
 - Limited number of lives
 
-##Implementation Details
+## Implementation Details
 
-###Asteroids, the ship and bullets all extend the moving object class.
+### Asteroids, the ship and bullets all extend the moving object class.
 Inheritance is set up using an inherits utility function:
 ```javascript
  inherits: function (ChildClass, ParentClass) {
@@ -22,7 +22,7 @@ Inheritance is set up using an inherits utility function:
    ChildClass.prototype.constructor = ChildClass;
  }
 ```
-###The game iterates over all objects to check for collisions and to draw on the canvas.
+### The game iterates over all objects to check for collisions and to draw on the canvas.
 For every frame objects positions are checked, and if any two objects centerpoints closer than their combined radii, their internal collision logic fires:
 ```javascript
   Game.prototype.checkCollisons = function () {
@@ -39,14 +39,14 @@ For every frame objects positions are checked, and if any two objects centerpoin
   };
 ```
 
-###All objects are circles, so collision detection is done by distance between two object centerpoints.
+### All objects are circles, so collision detection is done by distance between two object centerpoints.
 Objects radii are added together and checked against the distance between two objects:
 ```javascript
   MovingObject.prototype.isCollidedWith = function(otherObject) {
     return utils.distanceBetween(this.pos, otherObject.pos) < (this.radius + otherObject.radius);
   };
 ```
-###Thrust is generated in the direction the ship is facing.
+### Thrust is generated in the direction the ship is facing.
   Impulse is provided by the up key, which then adds to the ships current velocity:
 ```javascript
   Ship.prototype.power = function (impulse) {
@@ -61,16 +61,16 @@ Objects radii are added together and checked against the distance between two ob
   };
 ```
 
-##Gameplay photos
+## Gameplay photos
 
-###Gameplay
+### Gameplay
   ![Gameplay](/Screenshots/gameplay.png)
 
-###Game over
+### Game over
   ![Game Over](/Screenshots/gameover.png)
 
 
-##Todo
+## Todo
 - Make splash screen
 - restart game when losing
 - validate that new life doesn't begin on an asteroid
